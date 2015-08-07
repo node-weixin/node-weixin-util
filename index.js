@@ -11,8 +11,9 @@ module.exports = {
     }
     return nonces.join('');
   },
+
   /**
-   * Marshalling params
+   * Translate object to url parameters
    *
    * @param params
    * @returns {string}
@@ -24,5 +25,25 @@ module.exports = {
       keys.push(encodeURIComponent(k) + '=' + encodeURIComponent(params[k]));
     }
     return keys.join('&');
+  },
+
+  /**
+   * Marshalling object keys to be sorted alphabetically and then translated to url parameters
+   *
+   * @param params
+   * @returns {string}
+   */
+  marshall: function (params) {
+    params = params || {};
+    var keys = Object.keys(params).sort();
+    var obj = {}, kvs = [];
+    for (var i = 0; i < keys.length; i++) {
+      var k = keys[i];
+      if (params[k]) {
+        obj[k] = params[k];
+        kvs.push(keys[i] + '=' + params[k]);
+      }
+    }
+    return kvs.join('&');
   }
 };

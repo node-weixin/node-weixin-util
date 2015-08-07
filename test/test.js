@@ -28,4 +28,18 @@ describe('node-weixin-util node module', function () {
     url = nodeWeixinUtil.toParam(params);
     assert.equal(true, url === 'a=1&c=2&%E7%BE%8E%E5%9B%BD=%E4%B8%AD%E5%9B%BD');
   });
+
+
+  it('should be able to marshall params', function (done) {
+    var params = {
+      a: 'b',
+      d: 'd',
+      c: 'd',
+      1: 'hello',
+
+    };
+    var result = nodeWeixinUtil.marshall(params);
+    assert.equal(true, result === '1=hello&a=b&c=d&d=d');
+    done();
+  });
 });
