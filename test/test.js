@@ -42,4 +42,17 @@ describe('node-weixin-util node module', function () {
     assert.equal(true, result === '1=hello&a=b&c=d&d=d');
     done();
   });
+
+  it('should be able to convert params to xml', function (done) {
+    var params = {
+      a: 'b',
+      d: 1,
+      c: 'd',
+      1: 'hello',
+
+    };
+    var result = nodeWeixinUtil.toXml(params);
+    assert.equal(true, result === '<xml><1><![CDATA[hello]]></1><a><![CDATA[b]]></a><d>1</d><c><![CDATA[d]]></c></xml>');
+    done();
+  });
 });

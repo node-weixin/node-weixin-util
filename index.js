@@ -1,4 +1,5 @@
 'use strict';
+var validator = require("validator");
 module.exports = {
   getNonce: function (length) {
     length = length || 32;
@@ -45,5 +46,21 @@ module.exports = {
       }
     }
     return kvs.join('&');
-  }
+  },
+  toXml: function (params) {
+    var lines = [];
+    lines.push('<xml>');
+    for (var k in params) {
+      if (!params[k]) {
+        continue;
+      }
+      if (validator.isNumeric(params[k]) || validator.isFloat(params[k])) {
+        lines.push('<' + k + '>' + params[k] + '</' + k + '>');
+      } else {
+        lines.push('<' + k + '><![CDATA[' + params[k] + ']]></' + k + '>');
+      }
+    }
+    lines.push('</xml>');
+    return lines.join('');
+  },
 };
