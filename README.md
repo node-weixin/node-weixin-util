@@ -14,8 +14,17 @@ $ npm install --save node-weixin-util
 
 ```js
 var nodeWeixinUtil = require('node-weixin-util');
+var url, result;
+var params = {
+  a: '1',
+  c: '2',
+  '美国': '中国'
+};
 
-nodeWeixinUtil('Rainbow');
+url = nodeWeixinUtil.toParam(params);
+result = nodeWeixinUtil.marshall(params);
+result = nodeWeixinUtil.toXml(params);
+
 ```
 
 
