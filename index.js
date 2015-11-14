@@ -62,5 +62,5 @@ module.exports = {
     }
     lines.push('</xml>');
     return lines.join('');
-  },
+  }
 };
