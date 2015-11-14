@@ -49,7 +49,7 @@ describe('node-weixin-util node module', function () {
       d: 1,
       c: 'd',
       1: 'hello',
-
+      n: ''
     };
     var result = nodeWeixinUtil.toXml(params);
     assert.equal(true, result === '<xml><1><![CDATA[hello]]></1><a><![CDATA[b]]></a><d>1</d><c><![CDATA[d]]></c></xml>');
