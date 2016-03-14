@@ -1,4 +1,6 @@
 'use strict';
+/* eslint quote-props: [2, "as-needed"] */
+
 var assert = require('assert');
 var nodeWeixinUtil = require('../');
 
@@ -10,7 +12,6 @@ describe('node-weixin-util node module', function () {
     assert(true, nonce.length === length);
   });
   it('should make url parameters', function () {
-
     var params = {
       a: '1',
       c: '2',
@@ -22,21 +23,19 @@ describe('node-weixin-util node module', function () {
     params = {
       a: '1',
       c: '2',
-      '美国': '中国'
+      美国: '中国'
     };
 
     url = nodeWeixinUtil.toParam(params);
     assert.equal(true, url === 'a=1&c=2&%E7%BE%8E%E5%9B%BD=%E4%B8%AD%E5%9B%BD');
   });
 
-
   it('should be able to marshall params', function (done) {
     var params = {
       a: 'b',
       d: 'd',
       c: 'd',
-      1: 'hello',
-
+      1: 'hello'
     };
     var result = nodeWeixinUtil.marshall(params);
     assert.equal(true, result === '1=hello&a=b&c=d&d=d');
