@@ -15,11 +15,14 @@ describe('node-weixin-util node module', function () {
     var params = {
       a: '1',
       c: '2',
+      d: 3,
+      e: 3.1,
       'd-c': 'aaa'
     };
 
     var url = nodeWeixinUtil.toParam(params);
-    assert.equal(true, url === 'a=1&c=2&d-c=aaa');
+    console.log(url);
+    assert.equal(true, url === 'a=1&c=2&d=3&e=3.1&d-c=aaa');
     params = {
       a: '1',
       c: '2',
